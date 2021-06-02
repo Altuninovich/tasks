@@ -1,0 +1,52 @@
+.about_tasks {
+    margin-top: 5%;
+}
+
+.header {
+    display: grid;
+    grid-template-areas:
+    "nameSort nameSort nameSort nameSort" 
+    "active completed edited edited-completed";
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.header_nameSort {
+    grid-area: nameSort;
+    text-align: center;
+    margin-bottom: 2%;
+ }
+
+.header_active {
+    grid-area: active;
+    text-align: center;
+}
+
+.header_completed {
+    grid-area: completed;
+    text-align: center;
+}
+
+.header_edited {
+    grid-area: edited;
+    text-align: center;
+}
+
+.header_editedcompleted {
+    grid-area: edited-completed;
+    text-align: center;
+}
+
+.tasks_paginator {
+    display: block;
+    margin: auto;
+    width: 50%;
+}
+
+.tasks_list {
+    display: block;
+    margin: auto;
+    width: 50%;
+}
+
+

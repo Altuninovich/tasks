@@ -1,0 +1,40 @@
+.task {
+    display: grid;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    grid-template-areas:
+    "name email status id"
+    "edit edit changeStatus changeStatus" 
+    "text text text text";
+    grid-template-columns: 1fr 1fr 3fr 1fr;
+}
+
+.task_name {
+    grid-area: name;
+    justify-self: center;
+}
+.task_email {
+    grid-area: email;
+    justify-self: center;
+}
+.task_status {
+    grid-area: status;
+    justify-self: center;
+}
+.task_id {
+    grid-area: id;
+    justify-self: center;
+}
+.task_text {
+    grid-area: text;
+    background-color: bisque;
+    min-height: 100px;
+}
+.task_edit {
+    grid-area: edit;
+    justify-self: center;
+}
+.task_changeStatus {
+    grid-area: changeStatus;
+    justify-self: center;
+}
