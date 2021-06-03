@@ -17,7 +17,7 @@ const instance = axios.create({
 });
 
 export const authAPI = {
-    authenticationPost(form) {
+    authentication(form) {
         const formData = new FormData()
         const {username, password} = form;
         formData.append("username", username);
@@ -33,8 +33,8 @@ export const tasksAPI = {
         //return instance.get('create?developer=Altunin').then(response => response.data);
     },
     createTask(form) {
-        const formData = new FormData()
         const {username, email, text} = form;
+        const formData = new FormData()
         formData.append("username", username);
         formData.append("email", email);
         formData.append("text", text);

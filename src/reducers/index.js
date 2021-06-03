@@ -32,10 +32,10 @@ const totalCountTasks = (state = null, action) => {
     }
 }
 
-const message = (state = null, action) => {
+const errorMessage = (state = null, action) => {
     switch (action.type) {
-        case 'SET_MESSAGE':
-            return action.payload.message
+        case 'SET_ERROR':
+            return action.payload.errorMessage
         default:
             return state
     }
@@ -63,23 +63,24 @@ const authentication = (state = initStateAut, action) => {
     }
 }
 
-/*
-const weatherCityGeneralData = (state = {}, action) => {
+
+const successMessage = (state = null, action) => {
     switch (action.type) {
-        case 'SET_WEATHER_CITY_GENERAL_DATA': {
-            return action.payload.weatherCityGeneralData
+        case 'SET_MESSAGE': {
+            return action.payload.message
         }
         default:
             return state
     }
 }
-*/
+
 export default combineReducers({
     tasks,
     totalCountTasks,
     form: formReducer,
-    message,
+    errorMessage,
     isFetching,
-    authentication
+    authentication,
+    successMessage
     
 });

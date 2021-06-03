@@ -7,6 +7,13 @@ export const togglePreloader = (isFetching) => ({
     }
 })
 
+export const setSuccessMessage = (message) => ({
+    type: 'SET_MESSAGE',
+    payload: {
+        message,
+    }
+})
+
 export const setTasks = (tasks) => ({
     type: 'SET_TASKS',
     payload: {
@@ -21,10 +28,10 @@ const setTotalCountTasks = (num) => ({
     }
 })
 
-export const setMessage = (message) => ({
-    type: 'SET_MESSAGE',
+export const setError = (errorMessage) => ({
+    type: 'SET_ERROR',
     payload: {
-        message,
+        errorMessage,
     }
 })
 
@@ -35,24 +42,24 @@ export const setAuthenticationData = (authData) => ({
     }
 })
 
-export const authenticationPostThunk = (form) => async (dispatch) => {
+export const authenticationThunk = (form) => async (dispatch) => {
     dispatch(togglePreloader(true))
-    const response = await api.authAPI.authenticationPost(form)
+    const response = await api.authAPI.authentication(form)
     if (response.status === 'ok') {
         localStorage.setItem('token', JSON.stringify({
             token: response.message.token
-          }))
-        dispatch(setAuthenticationData({token: response.message.token, isAuth: true}))
+        }))
+        dispatch(setAuthenticationData({ token: response.message.token, isAuth: true }))
     }
     else {
-        dispatch(setMessage(response))
+        dispatch(setError(response.message.password))
     }
+    dispatch(togglePreloader(false))
 }
 
 export const getTasksThunk = () => async (dispatch) => {
     dispatch(togglePreloader(true))
     const response = await api.tasksAPI.getTasks()
-    console.log(response)
     dispatch(setTotalCountTasks(response.message.total_task_count))
     dispatch(setTasks(response.message.tasks))
     dispatch(togglePreloader(false))
@@ -68,17 +75,26 @@ export const getTasksByPageNumberThunk = (num) => async (dispatch) => {
 export const createTaskThunk = (form) => async (dispatch) => {
     dispatch(togglePreloader(true))
     const response = await api.tasksAPI.createTask(form)
-    /*
     if (response.status !== 'ok') {
         const key = Object.keys(response.message)
         const value = Object.values(response.message)
-        dispatch(setMessage(`${key} ${value}`))
-        
-       dispatch(setMessage(response))
+        dispatch(setError(`${key} ${value}`))
     }
-    */
-    dispatch(setMessage(response))
-        //dispatch(setMessage('задача была добавлена'))
-        dispatch(togglePreloader(false))               
+    else {
+        dispatch(setSuccessMessage(response))
+    }
+    dispatch(togglePreloader(false))
 }
  
+export const verifyingAuthFromlocalStorageThunk = () => (dispatch) => {
+    const data = JSON.parse(localStorage.getItem('token'))
+    if (data && data.token) {
+        dispatch(setAuthenticationData({ token: data.token, isAuth: true }))
+    }
+}
+
+export const logautThunk = () => (dispatch) => {
+    localStorage.removeItem('token')
+    dispatch(setAuthenticationData({ token: null, isAuth: false }))
+}
+

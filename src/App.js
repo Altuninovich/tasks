@@ -4,8 +4,18 @@ import Navibar from './components/Nav';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Tasks from './components/Tasks';
 import CreateTask from './components/CreateTask';
+import * as actions from './actions/index';
+import { connect } from 'react-redux';
+import { useEffect } from 'react';
 
-function App() {
+const actionCreators = {
+  verifyingAuthFromlocalStorageThunk: actions.verifyingAuthFromlocalStorageThunk,
+}
+
+function App(props) {
+  const {verifyingAuthFromlocalStorageThunk} = props
+  useEffect(() => verifyingAuthFromlocalStorageThunk(), [])
+
   return (
     <Router>
     <div className="about">
@@ -19,4 +29,4 @@ function App() {
   );
 }
 
-export default App;
+export default connect(null, actionCreators)(App);

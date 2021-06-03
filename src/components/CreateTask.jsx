@@ -7,21 +7,20 @@ import {withRouter} from 'react-router-dom'
 
 const mapStateToProps = (state) => ({
     isFetching: state.isFetching,
-    message: state.message
+    errorMessage: state.errorMessage,
+    successMessage: state.successMessage
 })
 
 const actionCreators = {
     createTaskThunk: actions.createTaskThunk,
-    setMessage: actions.setMessage
+    setError: actions.setError,
+    setSuccessMessage: actions.setSuccessMessage,
 }
-
-
-
 
 
 const CreateTask = (props) => {
 
-    const {createTaskThunk, isFetching, message, setMessage} = props
+    const {createTaskThunk, isFetching, errorMessage, setError, successMessage, setSuccessMessage} = props
     const [email, setEmail] = useState(null)
     const [username, setName] = useState(null)
     const [text, setText] = useState(null)
@@ -29,29 +28,27 @@ const CreateTask = (props) => {
     const handleSubmit = () => {
         const form = {username, email, text}
         createTaskThunk(form)
-        setText(null)
     }
 
     useEffect(() => {
-        if (!message) {
-            return
+        console.log(errorMessage)
+        if (errorMessage) {
+            alert(errorMessage)
+            setError(null)
         }
-        if (message.status !== 'ok') {
-            const key = Object.keys(message.message)
-            const value = Object.values(message.message)
-            alert(`${key} ${value}`)
-            setMessage(null)
-        }
-        else {
+    }, [errorMessage])
+
+    useEffect(() => {
+        console.log(successMessage)
+        if (successMessage) {
         setEmail(null)
         setName(null)
         setText(null)
-        setMessage(null)
-        alert('задача добавлена')
-        setMessage(null)
+        alert(`${successMessage.message.username} ваша задача добавлена`)
+        setSuccessMessage(null)
         props.history.push("/tasks")
         }
-    }, [message])
+    },[successMessage])
 
     return (
         <div className={s.wrapper}>
