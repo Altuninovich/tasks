@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
+import _ from 'lodash';
+
 
 const initlState = [
     {
@@ -15,6 +17,11 @@ const tasks = (state = null, action) => {
     switch (action.type) {
         case 'SET_TASKS': {
             return action.payload.tasks
+        }
+        case 'UPDATE_TASK': {
+            const {newTask} = action.payload
+            const task = _.omit(newTask, ['token', 'id'])
+            return state.map((t) => t.id === newTask.id ? {...t, ...task} : t)
         }
         default:
             return state

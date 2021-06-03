@@ -46,3 +46,16 @@ export const tasksAPI = {
         return axios.get(`https://uxcandy.com/~shapoval/test-task-backend/v2/?developer=Altunin&page=${num}`).then(response => response.data);
     }
 };
+
+export const editingTaskAPI = {
+    editingTask(form) {
+        const {token, text, status, id} = form;
+        const formData = new FormData()
+        formData.append("token", token);
+        formData.append("text", text);
+        formData.append("status", status);
+
+        return axios.post(`https://uxcandy.com/~shapoval/test-task-backend/v2/edit/${id}?developer=Altunin`, 
+        formData).then(response => response.data);
+    }
+}

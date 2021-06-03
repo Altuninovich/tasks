@@ -1,4 +1,5 @@
 import * as api from "../api/api";
+import _ from 'lodash';
 
 export const togglePreloader = (isFetching) => ({
     type: 'IS_FETCHING',
@@ -39,6 +40,13 @@ export const setAuthenticationData = (authData) => ({
     type: 'SET_AUTH_DATA',
     payload: {
         authData,
+    }
+})
+
+export const updateTask = (newTask) => ({
+    type: 'UPDATE_TASK',
+    payload: {
+        newTask
     }
 })
 
@@ -96,5 +104,19 @@ export const verifyingAuthFromlocalStorageThunk = () => (dispatch) => {
 export const logautThunk = () => (dispatch) => {
     localStorage.removeItem('token')
     dispatch(setAuthenticationData({ token: null, isAuth: false }))
+}
+
+export const editingTaskThunk = (form) => async (dispatch) => {
+    dispatch(togglePreloader(true))
+    const response = await api.editingTaskAPI.editingTask(form)
+    if (response.status !== 'ok') {
+        dispatch(setError(response.message.token))
+    }
+    else {
+        dispatch(updateTask(form))
+        dispatch(setSuccessMessage(response))
+    }
+    dispatch(togglePreloader(false))
+
 }
 

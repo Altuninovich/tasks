@@ -30,9 +30,16 @@
     background-color: bisque;
     min-height: 100px;
 }
+.task_text > textarea {
+    resize: both;
+	display: inline-block;
+	overflow: auto;
+	min-width: 300px;
+	min-height: 250px;
+    background-color: rgb(192, 221, 228);
+}
 .task_edit {
     grid-area: edit;
-    justify-self: center;
 }
 .task_changeStatus {
     grid-area: changeStatus;

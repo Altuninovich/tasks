@@ -9,11 +9,13 @@ import { Task } from './Task';
 const mapStateToProps = (state) => ({
     tasks: state.tasks,
     totalCountTasks: state.totalCountTasks,
+    authentication: state.authentication,
 })
 
 const actionCreators = {
     getTasksThunk: actions.getTasksThunk,
-    getTasksByPageNumberThunk: actions.getTasksByPageNumberThunk
+    getTasksByPageNumberThunk: actions.getTasksByPageNumberThunk,
+    editingTaskThunk: actions.editingTaskThunk,
 }
 
 
@@ -23,10 +25,12 @@ const Tasks = (props) => {
     const { tasks,
         getTasksThunk,
         getTasksByPageNumberThunk,
-        totalCountTasks
+        totalCountTasks,
+        editingTaskThunk,
+        authentication,
     } = props
 
-    useEffect(getTasksThunk, [])
+    useEffect(() => getTasksThunk(), [])
 
     return (
         <div className='about_tasks'>
@@ -42,7 +46,7 @@ const Tasks = (props) => {
                     <Paginator currentPage={1} numberPages={totalCountTasks} getTasksByPageNumberThunk={getTasksByPageNumberThunk} />
                 </div>
                 <div className='tasks_list'>
-                    {tasks && tasks.map((t) => <Task t={t} />)}
+                    {tasks && tasks.map((t) => <Task t={t} editingTaskThunk={editingTaskThunk} authentication={authentication} />)}
                 </div>
             </div>
         </div>
