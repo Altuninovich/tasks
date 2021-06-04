@@ -21,7 +21,7 @@ function App(props) {
     <div className="about">
       <Navibar/>
       <Switch>
-        <Route path="/tasks" component={Tasks} />
+        <Route exact path="/" component={Tasks} />
         <Route path="/create" component={CreateTask} />
       </Switch>
     </div>

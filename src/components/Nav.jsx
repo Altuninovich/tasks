@@ -32,7 +32,7 @@ const Navibar = (props) => {
     <div className='about_nav'>
       <Navbar bg="light" variant="light">
         <Nav className="mr-auto">
-          <Nav.Link><NavLink style={{ textDecoration: 'none', color: 'grey' }} to="/tasks">Список задач</NavLink></Nav.Link>
+          <Nav.Link><NavLink style={{ textDecoration: 'none', color: 'grey' }} to="/">Список задач</NavLink></Nav.Link>
           <Nav.Link><Link style={{ textDecoration: 'none', color: 'grey' }} to="/create">Создать задачу</Link></Nav.Link>
           <Nav.Link onClick={handleClick}>{isAuth ? 'Выход' : 'Вход'}</Nav.Link>
         </Nav>
