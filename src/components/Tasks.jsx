@@ -87,7 +87,7 @@ const Tasks = (props) => {
                 </div>
                 <div className='tasks_list'>
                     {tasks && tasks.map((t) =>
-                        <Task t={t}
+                        <Task key={t.id} t={t}
                             editingTaskThunk={editingTaskThunk}
                             authentication={authentication}
                             isFetching={isFetching}

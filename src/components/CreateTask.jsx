@@ -21,9 +21,9 @@ const actionCreators = {
 const CreateTask = (props) => {
 
     const { createTaskThunk, isFetching, errorMessage, setError, successMessage, setSuccessMessage } = props
-    const [email, setEmail] = useState(null)
-    const [username, setName] = useState(null)
-    const [text, setText] = useState(null)
+    const [email, setEmail] = useState('')
+    const [username, setName] = useState('')
+    const [text, setText] = useState('')
 
     const handleSubmit = () => {
         const form = { username, email, text }
@@ -31,7 +31,6 @@ const CreateTask = (props) => {
     }
 
     useEffect(() => {
-        console.log(errorMessage)
         if (errorMessage) {
             alert(errorMessage)
             setError(null)
@@ -39,14 +38,13 @@ const CreateTask = (props) => {
     }, [errorMessage])
 
     useEffect(() => {
-        console.log(successMessage)
         if (successMessage) {
-            setEmail(null)
-            setName(null)
-            setText(null)
+            setEmail('')
+            setName('')
+            setText('')
             alert(`${successMessage.message.username} ваша задача добавлена`)
             setSuccessMessage(null)
-            props.history.push("/tasks")
+            props.history.push("/")
         }
     }, [successMessage])
 

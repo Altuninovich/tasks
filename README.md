@@ -1,7 +1,7 @@
 # TASKS
  
 
-* Pезультат можно посмотреть тут: https://fast-sierra-16248.herokuapp.com
+* Pезультат можно посмотреть тут: https://cryptic-taiga-71469.herokuapp.com/
 
 
 ## SETUP
