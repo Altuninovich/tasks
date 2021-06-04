@@ -73,9 +73,9 @@ export const getTasksThunk = () => async (dispatch) => {
     dispatch(togglePreloader(false))
 }
 
-export const getTasksByPageNumberThunk = (num) => async (dispatch) => {
+export const getTasksByPageNumberEndFilterThunk = (num = 1, filter) => async (dispatch) => {
     dispatch(togglePreloader(true))
-    const response = await api.tasksAPI.getTasksByPageNumber(num)
+    const response = await api.tasksAPI.getTasksByPageNumberEndFilter(num, filter)
     dispatch(setTasks(response.message.tasks))
     dispatch(togglePreloader(false))
 }

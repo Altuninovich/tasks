@@ -4,7 +4,7 @@ import styles from "./Paginator.module.css";
 import { Pagination } from "react-bootstrap";
 
 
-const Paginator = ({ numberPages, currentPage, getTasksByPageNumberThunk, pageSize = 3, portionSize = 10 }) => {
+const Paginator = ({ numberPages, getTasksByPageNumberEndFilterThunk, pageSize = 3, portionSize = 10, tasksFilteringMode }) => {
 
     let pagesCount = Math.ceil(numberPages / pageSize);
 
@@ -15,12 +15,13 @@ const Paginator = ({ numberPages, currentPage, getTasksByPageNumberThunk, pageSi
 
     let portionCount = Math.ceil(pagesCount / portionSize);
     let [portionNumber, setPortionNumber] = useState(1);
+    let [currentPage, setCurrentPage] = useState(1);
     let leftPortionPageNumber = (portionNumber - 1) * portionSize + 1;
     let rightPortionPageNumber = portionNumber * portionSize;
 
 
     return (
-        <div className={styles.paginator}>
+        <div>
             <Pagination className={styles.pagination}>
                 {portionNumber > 1 && <Pagination.First onClick={() => setPortionNumber(portionNumber - 1)} />}
                 {pages
@@ -28,16 +29,17 @@ const Paginator = ({ numberPages, currentPage, getTasksByPageNumberThunk, pageSi
                     .map((p) => {
                         return (
                             <Pagination.Item className={styles.pagination} key={p}
-                                onClick={() => getTasksByPageNumberThunk(p)}
+                                onClick={() => {
+                                    setCurrentPage(p)
+                                    getTasksByPageNumberEndFilterThunk(p, tasksFilteringMode)
+                                }}
                                 active={currentPage === p}
                             >{p}</Pagination.Item>
+
                         )
                     })}
-
-
                 {portionCount > portionNumber && <Pagination.Last onClick={() => setPortionNumber(portionNumber + 1)} />}
             </Pagination>
-
         </div>
     )
 }

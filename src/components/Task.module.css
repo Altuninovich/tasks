@@ -21,6 +21,12 @@
     grid-area: status;
     justify-self: center;
 }
+.statusNotCompleted {
+    color: rgb(182, 53, 77);
+}
+.statusCompleted {
+    color:rgb(112, 145, 57);
+}
 .task_id {
     grid-area: id;
     justify-self: center;

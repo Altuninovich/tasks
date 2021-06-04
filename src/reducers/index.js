@@ -81,6 +81,7 @@ const successMessage = (state = null, action) => {
     }
 }
 
+
 export default combineReducers({
     tasks,
     totalCountTasks,
@@ -88,6 +89,6 @@ export default combineReducers({
     errorMessage,
     isFetching,
     authentication,
-    successMessage
+    successMessage,
     
 });
