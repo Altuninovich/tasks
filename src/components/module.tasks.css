@@ -6,34 +6,34 @@
     display: grid;
     grid-template-areas:
     "nameSort nameSort nameSort nameSort" 
-    "active completed edited edited-completed";
+    "total name email status";
     grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
-.header_nameSort {
+.header_name {
     grid-area: nameSort;
     text-align: center;
     margin-bottom: 2%;
  }
 
-.header_active {
-    grid-area: active;
+.header_sortTotal {
+    grid-area: total;
     text-align: center;
 }
 
-.header_completed {
-    grid-area: completed;
+.header_sortName {
+    grid-area: name;
     text-align: center;
 }
 
-.header_edited {
-    grid-area: edited;
+.header_sortEmail {
+    grid-area: email;
     text-align: center;
 }
 
-.header_editedcompleted {
-    grid-area: edited-completed;
+.header_sortStatus {
+    grid-area: status;
     text-align: center;
 }
 
@@ -48,5 +48,3 @@
     margin: auto;
     width: 50%;
 }
-
-

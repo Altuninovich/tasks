@@ -1,4 +1,3 @@
-//import cn from "classnames";
 import React, { useState } from 'react';
 import styles from "./Paginator.module.css";
 import { Pagination } from "react-bootstrap";

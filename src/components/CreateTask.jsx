@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import * as actions from '../actions/index';
 import { Button, Form } from 'react-bootstrap';
 import s from './CreateTask.module.css';
-import {withRouter} from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 const mapStateToProps = (state) => ({
     isFetching: state.isFetching,
@@ -20,13 +20,13 @@ const actionCreators = {
 
 const CreateTask = (props) => {
 
-    const {createTaskThunk, isFetching, errorMessage, setError, successMessage, setSuccessMessage} = props
+    const { createTaskThunk, isFetching, errorMessage, setError, successMessage, setSuccessMessage } = props
     const [email, setEmail] = useState(null)
     const [username, setName] = useState(null)
     const [text, setText] = useState(null)
 
     const handleSubmit = () => {
-        const form = {username, email, text}
+        const form = { username, email, text }
         createTaskThunk(form)
     }
 
@@ -41,14 +41,14 @@ const CreateTask = (props) => {
     useEffect(() => {
         console.log(successMessage)
         if (successMessage) {
-        setEmail(null)
-        setName(null)
-        setText(null)
-        alert(`${successMessage.message.username} ваша задача добавлена`)
-        setSuccessMessage(null)
-        props.history.push("/tasks")
+            setEmail(null)
+            setName(null)
+            setText(null)
+            alert(`${successMessage.message.username} ваша задача добавлена`)
+            setSuccessMessage(null)
+            props.history.push("/tasks")
         }
-    },[successMessage])
+    }, [successMessage])
 
     return (
         <div className={s.wrapper}>

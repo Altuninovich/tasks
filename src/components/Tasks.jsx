@@ -25,8 +25,6 @@ const actionCreators = {
     setSuccessMessage: actions.setSuccessMessage,
 }
 
-
-
 const Tasks = (props) => {
 
     const { tasks,
@@ -45,7 +43,7 @@ const Tasks = (props) => {
 
     const [tasksFilteringMode, setTasksFilteringMode] = useState('общие')
 
-    const handleClickFilter = ({target: {outerText}}) => {
+    const handleClickFilter = ({ target: { outerText } }) => {
         setTasksFilteringMode(outerText)
         getTasksByPageNumberEndFilterThunk(null, outerText)
     }
@@ -72,7 +70,7 @@ const Tasks = (props) => {
     return (
         <div className='about_tasks'>
             <div className='header'>
-                <div className="header_nameSort">ОБЩИЕ</div>
+                <div className="header_name">ЗАДАЧИ</div>
                 <div className="header_sortTotal"><div className={btnClassTotal} onClick={handleClickFilter}>общие</div></div>
                 <div className="header_sortName"><div className={btnClassName} onClick={handleClickFilter}>по имени</div></div>
                 <div className="header_sortEmail"><div className={btnClassTotalEmail} onClick={handleClickFilter}>по @email</div></div>
@@ -80,24 +78,24 @@ const Tasks = (props) => {
             </div>
             <div className='tasks'>
                 <div className='tasks_paginator'>
-                    <Paginator 
-                    currentPage={1} 
-                    numberPages={totalCountTasks} 
-                    getTasksByPageNumberEndFilterThunk={getTasksByPageNumberEndFilterThunk}
-                    tasksFilteringMode={tasksFilteringMode} 
+                    <Paginator
+                        currentPage={1}
+                        numberPages={totalCountTasks}
+                        getTasksByPageNumberEndFilterThunk={getTasksByPageNumberEndFilterThunk}
+                        tasksFilteringMode={tasksFilteringMode}
                     />
                 </div>
                 <div className='tasks_list'>
-                    {tasks && tasks.map((t) => 
-                    <Task t={t} 
-                    editingTaskThunk={editingTaskThunk} 
-                    authentication={authentication} 
-                    isFetching={isFetching}
-                    setError={setError}
-                    setSuccessMessage={setSuccessMessage}               
-                    errorMessage={errorMessage}
-                    successMessage={successMessage}
-                    />)}
+                    {tasks && tasks.map((t) =>
+                        <Task t={t}
+                            editingTaskThunk={editingTaskThunk}
+                            authentication={authentication}
+                            isFetching={isFetching}
+                            setError={setError}
+                            setSuccessMessage={setSuccessMessage}
+                            errorMessage={errorMessage}
+                            successMessage={successMessage}
+                        />)}
                 </div>
             </div>
         </div>

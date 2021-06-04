@@ -93,7 +93,7 @@ export const createTaskThunk = (form) => async (dispatch) => {
     }
     dispatch(togglePreloader(false))
 }
- 
+
 export const verifyingAuthFromlocalStorageThunk = () => (dispatch) => {
     const data = JSON.parse(localStorage.getItem('token'))
     if (data && data.token) {

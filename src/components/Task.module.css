@@ -8,6 +8,19 @@
     "text text text text";
     grid-template-columns: 1fr 1fr 3fr 1fr;
 }
+@media (max-width: 992px) {
+    .task {
+        display: grid;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        grid-template-areas:
+        "name name email email"
+        "status status status id"
+        "edit edit changeStatus changeStatus" 
+        "text text text text";
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
 
 .task_name {
     grid-area: name;

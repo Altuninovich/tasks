@@ -1,9 +1,8 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import s from './Task.module.css';
 import { Button } from 'react-bootstrap'
 import { DropdownsList } from './Dropdowns';
 import cn from "classnames";
-
 
 export const Task = ({
     t,

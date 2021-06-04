@@ -2,7 +2,6 @@ import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 import _ from 'lodash';
 
-
 const initlState = [
     {
         id: null,
@@ -19,16 +18,15 @@ const tasks = (state = null, action) => {
             return action.payload.tasks
         }
         case 'UPDATE_TASK': {
-            const {newTask} = action.payload
+            const { newTask } = action.payload
             const task = _.omit(newTask, ['token', 'id'])
-            return state.map((t) => t.id === newTask.id ? {...t, ...task} : t)
+            return state.map((t) => t.id === newTask.id ? { ...t, ...task } : t)
         }
         default:
             return state
 
     }
 }
-
 
 const totalCountTasks = (state = null, action) => {
     switch (action.type) {
@@ -48,7 +46,6 @@ const errorMessage = (state = null, action) => {
     }
 }
 
-
 const isFetching = (state = false, action) => {
     switch (action.type) {
         case 'IS_FETCHING': {
@@ -59,7 +56,7 @@ const isFetching = (state = false, action) => {
     }
 }
 
-const initStateAut = {token: null, isAuth: false}
+const initStateAut = { token: null, isAuth: false }
 
 const authentication = (state = initStateAut, action) => {
     switch (action.type) {
@@ -69,7 +66,6 @@ const authentication = (state = initStateAut, action) => {
             return state
     }
 }
-
 
 const successMessage = (state = null, action) => {
     switch (action.type) {
@@ -81,7 +77,6 @@ const successMessage = (state = null, action) => {
     }
 }
 
-
 export default combineReducers({
     tasks,
     totalCountTasks,
@@ -90,5 +85,5 @@ export default combineReducers({
     isFetching,
     authentication,
     successMessage,
-    
+
 });
