@@ -77,6 +77,16 @@ const successMessage = (state = null, action) => {
     }
 }
 
+const currentPagePaginator = (state = 1, action) => {
+    switch (action.type) {
+        case 'SET_CURRENT_PAGE': {
+            return action.payload.currentPage
+        }
+        default:
+            return state
+    }
+}
+
 export default combineReducers({
     tasks,
     totalCountTasks,
@@ -85,5 +95,6 @@ export default combineReducers({
     isFetching,
     authentication,
     successMessage,
+    currentPagePaginator,
 
 });

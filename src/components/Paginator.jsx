@@ -3,7 +3,15 @@ import styles from "./Paginator.module.css";
 import { Pagination } from "react-bootstrap";
 
 
-const Paginator = ({ numberPages, getTasksByPageNumberEndFilterThunk, pageSize = 3, portionSize = 10, tasksFilteringMode }) => {
+const Paginator = ({ 
+    numberPages, 
+    getTasksByPageNumberEndFilterThunk, 
+    pageSize = 3, 
+    portionSize = 5, 
+    tasksFilteringMode,
+    currentPagePaginator,
+    setCurrentPagePaginator,
+ }) => {
 
     let pagesCount = Math.ceil(numberPages / pageSize);
 
@@ -14,7 +22,7 @@ const Paginator = ({ numberPages, getTasksByPageNumberEndFilterThunk, pageSize =
 
     let portionCount = Math.ceil(pagesCount / portionSize);
     let [portionNumber, setPortionNumber] = useState(1);
-    let [currentPage, setCurrentPage] = useState(1);
+    //let [currentPage, setCurrentPage] = useState(1);
     let leftPortionPageNumber = (portionNumber - 1) * portionSize + 1;
     let rightPortionPageNumber = portionNumber * portionSize;
 
@@ -29,10 +37,10 @@ const Paginator = ({ numberPages, getTasksByPageNumberEndFilterThunk, pageSize =
                         return (
                             <Pagination.Item className={styles.pagination} key={p}
                                 onClick={() => {
-                                    setCurrentPage(p)
+                                    setCurrentPagePaginator(p)
                                     getTasksByPageNumberEndFilterThunk(p, tasksFilteringMode)
                                 }}
-                                active={currentPage === p}
+                                active={currentPagePaginator === p}
                             >{p}</Pagination.Item>
 
                         )

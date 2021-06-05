@@ -50,6 +50,13 @@ export const updateTask = (newTask) => ({
     }
 })
 
+export const setCurrentPagePaginator = (currentPage) => ({
+    type: 'SET_CURRENT_PAGE',
+    payload: {
+        currentPage,
+    }
+})
+
 export const authenticationThunk = (form) => async (dispatch) => {
     dispatch(togglePreloader(true))
     const response = await api.authAPI.authentication(form)

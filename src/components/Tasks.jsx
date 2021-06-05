@@ -5,7 +5,7 @@ import Paginator from './Paginator';
 import * as actions from '../actions/index';
 import { connect } from "react-redux";
 import { Task } from './Task';
-import s from './Tasks.module.css';
+import s from './MenuSort.module.css';
 import cn from "classnames";
 
 const mapStateToProps = (state) => ({
@@ -15,6 +15,7 @@ const mapStateToProps = (state) => ({
     isFetching: state.isFetching,
     errorMessage: state.errorMessage,
     successMessage: state.successMessage,
+    currentPagePaginator: state.currentPagePaginator
 })
 
 const actionCreators = {
@@ -23,6 +24,7 @@ const actionCreators = {
     editingTaskThunk: actions.editingTaskThunk,
     setError: actions.setError,
     setSuccessMessage: actions.setSuccessMessage,
+    setCurrentPagePaginator: actions.setCurrentPagePaginator
 }
 
 const Tasks = (props) => {
@@ -38,6 +40,8 @@ const Tasks = (props) => {
         setSuccessMessage,
         errorMessage,
         successMessage,
+        currentPagePaginator,
+        setCurrentPagePaginator
 
     } = props
 
@@ -45,6 +49,7 @@ const Tasks = (props) => {
 
     const handleClickFilter = ({ target: { outerText } }) => {
         setTasksFilteringMode(outerText)
+        setCurrentPagePaginator(1)
         getTasksByPageNumberEndFilterThunk(null, outerText)
     }
 
@@ -83,6 +88,8 @@ const Tasks = (props) => {
                         numberPages={totalCountTasks}
                         getTasksByPageNumberEndFilterThunk={getTasksByPageNumberEndFilterThunk}
                         tasksFilteringMode={tasksFilteringMode}
+                        setCurrentPagePaginator={setCurrentPagePaginator}
+                        currentPagePaginator={currentPagePaginator}
                     />
                 </div>
                 <div className='tasks_list'>
