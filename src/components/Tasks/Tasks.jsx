@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { } from 'react-bootstrap';
 import './module.tasks.css';
-import Paginator from './Paginator';
-import * as actions from '../actions/index';
+import Paginator from '../Paginator/Paginator';
+import * as actions from '../../actions/index';
 import { connect } from "react-redux";
-import { Task } from './Task';
+import { Task } from '../Task/Task';
 import s from './MenuSort.module.css';
 import cn from "classnames";
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../actions/index';
+import * as actions from '../../actions/index';
 import { Button, Form } from 'react-bootstrap';
 import s from './CreateTask.module.css';
 import { withRouter } from 'react-router-dom'

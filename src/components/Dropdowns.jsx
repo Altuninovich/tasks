@@ -6,7 +6,6 @@ export const DropdownsList = (props) => {
     const { dropdownValue, setDropdownValue, setNewTaskStatus } = props
 
     const hendleSelectDropdown = (key, e) => {
-        console.log(e.target.outerText, key)
         setDropdownValue(e.target.outerText)
         setNewTaskStatus(key)
     }

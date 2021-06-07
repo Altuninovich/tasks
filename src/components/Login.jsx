@@ -15,11 +15,9 @@ const actionCreators = {
 }
 
 const Login = (props) => {
-    const { authentication: { isAuth }, authenticationThunk, errorMessage, setError } = props
+    const { authenticationThunk, errorMessage, setError } = props
     const [login, setLogin] = useState(null)
     const [parol, setParol] = useState(null)
-    const [inputMode, setInputMode] = useState(false)
-    console.log(errorMessage)
     const handleSubmit = () => {
         const form = { username: login, password: parol }
         authenticationThunk(form)
