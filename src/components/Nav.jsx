@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Navbar, Nav, Button, FormControl } from 'react-bootstrap';
+import { Navbar, Nav, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { NavLink, Link } from 'react-router-dom';
 import * as actions from '../actions/index';
