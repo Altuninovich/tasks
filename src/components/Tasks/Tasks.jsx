@@ -73,6 +73,7 @@ const Tasks = (props) => {
 
     return (
         <div className='about_tasks'>
+            {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
             <div className='header'>
                 <div className="header_name">ЗАДАЧИ</div>
                 <div className="header_sortTotal"><div className={btnClassTotal} onClick={handleClickFilter}>общие</div></div>

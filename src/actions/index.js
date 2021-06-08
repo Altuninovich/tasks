@@ -65,8 +65,7 @@ export const authenticationThunk = (form) => async (dispatch) => {
             token: response.message.token
         }))
         dispatch(setAuthenticationData({ token: response.message.token, isAuth: true }))
-    }
-    else {
+    } else {
         dispatch(setError(response.message.password))
     }
     dispatch(togglePreloader(false))

@@ -46,13 +46,6 @@ export const Task = ({
     }
 
     useEffect(() => {
-        if (errorMessage) {
-            alert(errorMessage)
-            setError(null)
-        }
-    }, [errorMessage])
-
-    useEffect(() => {
         if (successMessage) {
             setSuccessMessage(null)
             setEditMode(false)

@@ -18,6 +18,7 @@ const Login = (props) => {
     const { authenticationThunk, errorMessage, setError } = props
     const [login, setLogin] = useState(null)
     const [parol, setParol] = useState(null)
+
     const handleSubmit = () => {
         const form = { username: login, password: parol }
         authenticationThunk(form)
@@ -37,7 +38,6 @@ const Login = (props) => {
             <input placeholder='login' value={login} onChange={handleChangeLogin} type='text' />
             <input placeholder='parol' value={parol} onChange={handleChangeParol} type='text' />
             <submit onClick={handleSubmit}>войти</submit>
-            {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
         </div>
     )
 }
