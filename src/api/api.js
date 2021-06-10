@@ -19,7 +19,7 @@ export const authAPI = {
         const { username, password } = form;
         formData.append("username", username);
         formData.append("password", password);
-        return axios.post(`${baseURL}login?developer=Altunin`, formData).then(response => response.data);
+        return axios.post(`${baseURL}login?developer=Altuninovich`, formData).then(response => response.data);
         } catch (e) {
             throw e
         }
@@ -29,7 +29,7 @@ export const authAPI = {
 export const tasksAPI = {
     getTasks() {
         try {
-        return axios.get(`${baseURL}?developer=Altunin`).then(response => response.data);
+        return axios.get(`${baseURL}?developer=Altuninovich`).then(response => response.data);
         } catch (e) {
             throw e
         }
@@ -42,7 +42,7 @@ export const tasksAPI = {
         formData.append("email", email);
         formData.append("text", text);
 
-        return axios.post(`${baseURL}create?developer=Altunin`,
+        return axios.post(`${baseURL}create?developer=Altuninovich`,
             formData).then(response => response.data);
         } catch (e) {
             throw e
@@ -51,7 +51,7 @@ export const tasksAPI = {
     getTasksByPageNumberEndFilter(num, filterName) {
         try {
         const urlParametr = getUrlParameter(num, filterName)
-        return axios.get(`${baseURL}?developer=Altunin${urlParametr}`).then(response => response.data);
+        return axios.get(`${baseURL}?developer=Altuninovich${urlParametr}`).then(response => response.data);
         } catch (e) {
             throw e
         }
@@ -67,7 +67,7 @@ export const editingTaskAPI = {
         formData.append("text", text);
         formData.append("status", status);
 
-        return axios.post(`${baseURL}edit/${id}?developer=Altunin`,
+        return axios.post(`${baseURL}edit/${id}?developer=Altuninovich`,
             formData).then(response => response.data);
         } catch (e) {
             throw e
